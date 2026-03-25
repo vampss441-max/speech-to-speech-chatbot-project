@@ -42,7 +42,7 @@ def load_config() -> AppConfig:
         whisper_compute_type=os.getenv("WHISPER_COMPUTE_TYPE", "int8"),
         whisper_cpu_threads=_get_int("WHISPER_CPU_THREADS", 4),
 
-        groq_api_key=os.getenv("GROQ_API_KEY", ""),
+        groq_api_key=st.secrets.get("GROQ_API_KEY", os.getenv("GROQ_API_KEY", "")),
         groq_model_id=os.getenv("GROQ_MODEL_ID", "llama-3.1-8b-instant"),
         system_prompt=os.getenv(
             "SYSTEM_PROMPT",
